@@ -1,0 +1,48 @@
+import { Buyer } from "@/types";
+
+export const initialBuyers: Buyer[] = [
+  {
+    corporateNumber: "1234567890123",
+    companyName: "東京サンプル建設株式会社",
+    representativeName: "山田 太郎",
+    industry: "建設業",
+    establishedYear: 2009,
+    annualRevenueRange: "100m_300m",
+    employeeRange: "20_50",
+    headOfficeAddress: "東京都千代田区丸の内1-1-1",
+    installationAddress: "千葉県市原市〇〇町1-2-3",
+  },
+  {
+    corporateNumber: "2345678901234",
+    companyName: "大阪物流サービス株式会社",
+    representativeName: "佐藤 花子",
+    industry: "運輸業",
+    establishedYear: 2015,
+    annualRevenueRange: "50m_100m",
+    employeeRange: "5_20",
+    headOfficeAddress: "大阪府大阪市北区梅田1-1-1",
+    installationAddress: "大阪府門真市大字門真1048",
+  },
+  {
+    corporateNumber: "3456789012345",
+    companyName: "中部精密工業株式会社",
+    representativeName: "伊藤 健一",
+    industry: "製造業",
+    establishedYear: 1998,
+    annualRevenueRange: "300m_1b",
+    employeeRange: "50_100",
+    headOfficeAddress: "愛知県名古屋市中区栄3-1-1",
+    installationAddress: "愛知県豊田市トヨタ町1番地",
+  },
+  {
+    corporateNumber: "4567890123456",
+    companyName: "北海道食品加工株式会社",
+    representativeName: "渡辺 美香",
+    industry: "食品製造業",
+    establishedYear: 2020,
+    annualRevenueRange: "under_50m",
+    employeeRange: "under_5",
+    headOfficeAddress: "北海道札幌市中央区北1条西1丁目",
+    installationAddress: "北海道札幌市白石区流通センター4丁目",
+  },
+];
