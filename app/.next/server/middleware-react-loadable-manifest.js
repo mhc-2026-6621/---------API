@@ -1,0 +1,1 @@
+self.__REACT_LOADABLE_MANIFEST="{\"components\\\\shared\\\\LazyApiCallViewer.tsx -> ./ApiCallViewer\":{\"id\":\"components\\\\shared\\\\LazyApiCallViewer.tsx -> ./ApiCallViewer\",\"files\":[\"static/chunks/_app-pages-browser_src_components_shared_ApiCallViewer_tsx.js\"]}}"
