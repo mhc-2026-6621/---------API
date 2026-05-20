@@ -18,7 +18,7 @@
 - `src/hooks/` - カスタムフック
 - `src/lib/` - UI非依存の業務ロジック
 - `src/types/` - 型定義、API契約
-- `tests/` - E2E/統合テスト
+- `tests/` - smoke test / 将来のE2Eテスト
 - `data-store/` - PoC用ランタイムデータ
 
 ## コーディング規約

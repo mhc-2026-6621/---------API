@@ -33,7 +33,7 @@ app/
 │   ├── lib/           # 業務ロジック、計算、表示ユーティリティ
 │   └── types/         # 型定義、API契約
 ├── public/            # 静的ファイル
-├── tests/             # E2E/統合テスト
+├── tests/             # smoke test / 将来のE2Eテスト
 ├── data-store/        # ローカル実行時データの置き場
 └── package.json
 ```
@@ -42,7 +42,7 @@ app/
 
 - URLやAPIルートに対応するファイルは `src/app/` に置く。
 - 複数画面で使うUIは `src/components/shared/` に置く。
-- 画面専用部品は、利用する画面の近くに `_components/` として置く。
+- 画面専用部品は、利用する画面フォルダ直下の `_components/` に配置する。
 - UIに依存しない業務ロジックは `src/lib/` に置く。
 - API契約や業務概念の型は `src/types/` に置く。
 - モックやseedデータは `src/data/` に置く。

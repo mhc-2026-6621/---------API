@@ -59,12 +59,19 @@ Content-Type: application/json
 
 {
   "assetId": "asset_001",
-  "financeType": "installment",
+  "assetPrice": 12800000,
+  "financeProduct": "installment",
   "termMonths": 60,
   "downPayment": 1000000,
-  "residualValue": "none",
-  "insurance": true,
-  "maintenance": false
+  "residualValuePercent": 0,
+  "includeInsurance": true,
+  "includeMaintenance": false,
+  "buyerProfile": {
+    "businessType": "construction",
+    "yearsInBusiness": 12,
+    "annualRevenueRange": "100m_500m",
+    "creditTier": "B"
+  }
 }
 ```
 
@@ -73,15 +80,32 @@ Content-Type: application/json
 ```json
 {
   "quoteId": "qt_xxx",
-  "monthlyPayment": 236300,
-  "breakdown": {
-    "principal": 227800,
-    "insurance": 8500,
-    "maintenance": 0
-  },
-  "annualRate": 5.80,
+  "assetId": "asset_001",
+  "financeProduct": "installment",
+  "financeProductLabel": "割賦",
   "termMonths": 60,
-  "validUntil": "2026-06-30"
+  "assetPrice": 12800000,
+  "downPayment": 1000000,
+  "residualValue": 0,
+  "financedAmount": 11800000,
+  "monthlyPayment": 236300,
+  "insuranceMonthlyFee": 8500,
+  "maintenanceMonthlyFee": 0,
+  "totalMonthlyPayment": 244800,
+  "annualRate": 0.062,
+  "totalPayment": 15688000,
+  "initialCost": 1000000,
+  "createdAt": "2026-05-20T00:00:00.000Z",
+  "validUntil": "2026-06-30",
+  "disclaimer": "この見積は概算です。本審査により条件が変更される場合があります。",
+  "rateBreakdown": {
+    "baseRate": 0.058,
+    "creditAdjustment": 0,
+    "usedAssetAdjustment": 0.004,
+    "inspectionAdjustment": 0,
+    "finalRate": 0.062,
+    "note": "中古資産加算(+0.4%)適用。点検レポートあり割引適用。"
+  }
 }
 ```
 
@@ -96,8 +120,22 @@ Content-Type: application/json
 {
   "assetId": "asset_001",
   "quoteId": "qt_xxx",
-  "company": { "name": "...", "registrationNumber": "..." },
-  "financeConditions": { "type": "installment", "termMonths": 60 }
+  "sellerId": "seller_001",
+  "buyer": { "companyName": "...", "registrationNumber": "..." },
+  "application": {
+    "financeProduct": "installment",
+    "termMonths": 60,
+    "downPayment": 1000000,
+    "personalGuarantee": true,
+    "financialStatementsAvailable": true,
+    "bankTransactionDataAvailable": false,
+    "purpose": "設備導入"
+  },
+  "consents": {
+    "creditCheck": true,
+    "antiSocialCheck": true,
+    "privacyPolicy": true
+  }
 }
 ```
 
@@ -107,9 +145,17 @@ Content-Type: application/json
 {
   "applicationId": "app_xxx",
   "status": "pre_approved",
-  "approvedAmount": 12800000,
-  "monthlyPayment": 236300,
-  "requiredDocuments": ["決算書（直近2期分）", "法人登記簿謄本"]
+  "decision": {
+    "result": "pre_approved",
+    "approvedAmount": 11800000,
+    "termMonths": 60,
+    "annualRate": 0.058,
+    "estimatedMonthlyPayment": 244800,
+    "requiredDocuments": ["本人確認書類", "商業登記簿謄本", "直近2期分の決算書"],
+    "conditions": ["動産総合保険の付保", "検収完了後に販売店へ支払"],
+    "reasonCodes": []
+  },
+  "nextAction": "本審査書類をアップロードしてください。"
 }
 ```
 

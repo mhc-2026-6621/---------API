@@ -19,6 +19,8 @@
 
 ## 起動
 
+別PCへコピーして起動する場合は、ブラウザで開ける [起動手順書.html](起動手順書.html) を参照してください。
+
 ```powershell
 cd app
 npm install
