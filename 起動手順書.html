@@ -288,6 +288,16 @@ npm -v</code></pre>
     <!-- 5. 起動 -->
     <section id="dev">
       <h2><span class="step-num">5</span>起動してブラウザで開く</h2>
+      <div class="callout warn">
+        <span class="callout-icon">⚠️</span>
+        <div class="callout-body">
+          <strong>実行ディレクトリに注意してください</strong>
+          <code>npm run dev</code> は、必ず配布フォルダ内の <code>app</code> ディレクトリで実行してください。別のディレクトリで実行するとエラーになります。<br>
+          初回セットアップ（手順4）で <code>cd</code> 済みの場合はそのまま実行できます。新しくPowerShellを開いた場合は、先に移動してください。
+          <pre style="margin-top:8px;"><code>cd "C:\Users\ユーザー名\Desktop\エンベデットリースAPI\app"</code></pre>
+          <small>※ 上記パスは配布フォルダをデスクトップに配置した場合の例です。実際のパスは配置場所に合わせて読み替えてください。</small>
+        </div>
+      </div>
       <p>セットアップ済みの <code>app</code> フォルダで、以下のコマンドを実行します。</p>
       <p class="cmd-label">▼ 開発サーバーの起動</p>
       <pre><code>npm run dev</code></pre>
@@ -328,6 +338,7 @@ npm -v</code></pre>
       <p class="cmd-label">▼ smoke test（基本的な構成チェック）</p>
       <pre><code>cd "C:\Users\ユーザー名\Desktop\エンベデットリースAPI\app"
 npm test</code></pre>
+      <p><small>※ パスは配布フォルダの配置場所に合わせて読み替えてください。既に <code>app</code> ディレクトリにいる場合、<code>cd</code> は不要です。</small></p>
       <div class="callout ok">
         <span class="callout-icon">✅</span>
         <div class="callout-body"><strong>正常完了時の出力</strong><code>pass 2</code> と表示されれば正常です。</div>
@@ -374,6 +385,22 @@ npm run start</code></pre>
       <h3>「<code>npm</code> は認識されていません」と表示される</h3>
       <p><strong>原因：</strong>Node.jsのインストールが完了していないか、PowerShellをインストール前から開いたままになっています。</p>
       <p><strong>対処：</strong>Node.jsを再インストールし、PowerShellを一度<strong>完全に閉じて</strong>から新しく開き直してください。</p>
+
+      <h3>「このシステムではスクリプトの実行が無効になっているため…npm.ps1 を読み込むことができません」と表示される</h3>
+      <p><strong>原因：</strong>Windowsの PowerShell 実行ポリシーにより、スクリプトファイル（<code>.ps1</code>）の実行がブロックされています。Node.js に同梱される <code>npm</code> コマンドは内部で <code>npm.ps1</code> というPowerShellスクリプトを使用するため、この制限に該当します。</p>
+      <p><strong>対処：</strong>PowerShell を<strong>管理者として実行</strong>し（スタートメニューで「PowerShell」を右クリック →「管理者として実行」）、以下のコマンドを実行してください。</p>
+      <p class="cmd-label">▼ 実行ポリシーの変更（管理者権限が必要・初回のみ）</p>
+      <pre><code>Set-ExecutionPolicy RemoteSigned -Scope CurrentUser</code></pre>
+      <p>確認メッセージが表示されたら <code>Y</code> を入力して Enter を押します。</p>
+      <div class="callout info">
+        <span class="callout-icon">ℹ️</span>
+        <div class="callout-body">
+          <strong>RemoteSigned とは</strong>
+          ローカルで作成されたスクリプトは実行を許可し、インターネットからダウンロードされたスクリプトは署名付きのみ許可する設定です。Microsoftが推奨する安全な設定であり、セキュリティリスクは最小限です。<br>
+          <small>詳細: <a href="https://go.microsoft.com/fwlink/?LinkID=135170" target="_blank">about_Execution_Policies（Microsoft公式）</a></small>
+        </div>
+      </div>
+      <p>設定後、PowerShellを閉じて開き直し、再度 <code>npm -v</code> を実行してバージョン番号が表示されることを確認してください。</p>
 
       <h3>ブラウザで画面が開かない（「接続できません」）</h3>
       <p><strong>原因：</strong>アプリがまだ起動していない、または起動に失敗しています。</p>
